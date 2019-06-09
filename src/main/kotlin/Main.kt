@@ -1,3 +1,9 @@
+
+import primitives.ECKey
+
 fun main() {
-    println("hello kbitcoin!")
+    val ecKey = ECKey()
+    println("Private: ${ecKey.priv}")
+    println("Public: ${ecKey.pub}")
 }
+

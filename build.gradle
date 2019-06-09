@@ -10,11 +10,26 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+//    TODO: move to package graadle file
+    // TODO: Make consistent
+    // TODO: testImplememtation for test deps
+    implementation "io.github.microutils:kotlin-logging:1.6.26"
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+    implementation 'com.google.guava:guava:27.1-jre'
+    implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.60'
+    implementation "org.junit.jupiter:junit-jupiter-engine:5.3.1"
+    implementation "org.junit.platform:junit-platform-gradle-plugin:1.0.2"
+    implementation "org.junit.jupiter:junit-jupiter-params:5.3.1"
+    implementation "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.21"
+
+
+    implementation "org.junit.jupiter:junit-jupiter-api:5.3.1"
+    implementation "org.assertj:assertj-core:3.9.0"
 }
 
 compileKotlin {
