@@ -25,5 +25,4 @@ class ECKeyTest {
     assertThat(key.getPrivateKeyAsHex()).isEqualTo(
         "000000000000000000000000000000000000000000000000000000000000000a")
   }
-
 }

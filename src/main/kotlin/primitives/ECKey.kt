@@ -43,10 +43,10 @@ class ECKey {
 
   // TODO: fix access modifiers
   private val secureRandom: SecureRandom?
-  private var pubKeyHash: ByteArray? = null
 
   val priv: BigInteger?  // A field element.
   val pub: ECPoint
+  val pubKeyHash: ByteArray
   val creationTimeSeconds: Long
 
   init {
@@ -87,6 +87,7 @@ class ECKey {
     }
     this.priv = priv
     this.pub = checkNotNull(pub)
+    pubKeyHash = sha256hash160(pub.encoded)
     secureRandom = null
   }
 

@@ -2,4 +2,4 @@ package utilities
 
 import com.google.common.io.BaseEncoding
 
-val HEX = BaseEncoding.base16().lowerCase()
+val HEX = BaseEncoding.base16().lowerCase()!!
