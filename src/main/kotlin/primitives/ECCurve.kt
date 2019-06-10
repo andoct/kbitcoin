@@ -28,13 +28,13 @@ class ECCurve {
 
     init {
       // The parameters of the secp256k1 curve that Bitcoin uses.
-      val EC_PARAMS = CustomNamedCurves.getByName("secp256k1")
+      val ecParameters = CustomNamedCurves.getByName("secp256k1")
 
       // Tell Bouncy Castle to precompute data that's needed during secp256k1 calculations.
-      FixedPointUtil.precompute(EC_PARAMS.g)
+      FixedPointUtil.precompute(ecParameters.g)
 
       EC_DOMAIN_PARAMS =
-          ECDomainParameters(EC_PARAMS.curve, EC_PARAMS.g, EC_PARAMS.n, EC_PARAMS.h)
+          ECDomainParameters(ecParameters.curve, ecParameters.g, ecParameters.n, ecParameters.h)
 
       // TODO
       // HALF_CURVE_ORDER = EC_PARAMS.getN().shiftRight(1)
