@@ -130,6 +130,9 @@ class Base58 {
      * @return the base58-encoded string
      */
     fun encodeChecked(version: Byte, payload: ByteArray): String {
+      if (version < 0 || version > 255)
+        throw IllegalArgumentException("Version not in range.")
+
       // A stringified buffer is:
       // 1 byte version + data bytes + 4 bytes check code (a truncated hash)
       val addressBytes = ByteArray(1 + payload.size + 4)

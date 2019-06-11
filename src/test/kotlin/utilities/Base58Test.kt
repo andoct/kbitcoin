@@ -21,7 +21,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 import primitives.AddressFormatException
-import primitives.PKHAddress
+import primitives.Base58Address
 import java.math.BigInteger
 
 // Forked from bitcoinj Base58Test
@@ -45,7 +45,7 @@ class Base58Test {
 
   @Test
   fun `encode checked address`() {
-    val encoded = Base58.encodeChecked(111, ByteArray(PKHAddress.LENGTH))
+    val encoded = Base58.encodeChecked(111, ByteArray(Base58Address.LENGTH))
     assertThat(encoded).isEqualTo("mfWxJ45yp2SFn7UciZyNpvDKrzbhyfKrY8")
   }
 
