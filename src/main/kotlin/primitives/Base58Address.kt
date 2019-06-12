@@ -23,15 +23,16 @@ import kotlin.experimental.and
 // Code forked from bitcoinj Address.java and modified
 
 // TODO: rename BaseAddress. It doesn't fit.
-abstract class Base58Address constructor(val networkType: NetworkType, hash160: ByteArray) {
-  private val addressVersion: AddressVersion
+abstract class Base58Address constructor(
+  networkType: NetworkType,
+  hash160: ByteArray
+) {
   private val hash160: ByteArray = checkNotNull(hash160)
 
   init {
     if (hash160.size != LENGTH)
       throw AddressFormatException.InvalidDataLength(
           "Legacy addresses are 20 byte (160 bit) hashes, but got: ${hash160.size}.")
-    this.addressVersion = AddressVersion.getAddressVersion(networkType)
   }
 
   /** The (big endian) 20 byte hash that is the core of a Bitcoin address.  */
@@ -40,7 +41,8 @@ abstract class Base58Address constructor(val networkType: NetworkType, hash160: 
   }
 
   fun toBase58(): String {
-    return Base58.encodeChecked(addressVersion.prefix, hash160)
+    // return Base58.encodeChecked(addressVersion.prefix, hash160)
+    return Base58.encodeChecked(0, hash160)
   }
 
   companion object {
@@ -75,9 +77,9 @@ abstract class Base58Address constructor(val networkType: NetworkType, hash160: 
       }
 
       // TODO: map to the appropriate type. How to do this with Kotlin? Factory pattern?
-      return when(addressVersion) {
+      return when (addressVersion) {
         is PKHAddressVersion -> PKHAddress.fromPubKeyHash(addressVersion.getNetworkType(), bytes)
-        is P2SHAddressVersion -> P2SHAddress.fromScriptHash(addressVersion.getNetworkType(), bytes)
+        // is P2SHAddressVersion -> P2SHAddress.fromScriptHash(addressVersion.getNetworkType(), bytes)
         // This branch should not execute. getAddressVersion above will throw InvalidPrefix exception
         else -> throw AddressFormatException.InvalidPrefix("Invalid Address Prefix")
       }
