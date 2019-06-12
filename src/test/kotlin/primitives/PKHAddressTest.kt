@@ -7,6 +7,25 @@ import utilities.HEX
 
 class PKHAddressTest {
   @Test
+  fun todo() {
+
+    val address = Thing.fromBytes<PKH>(HEX.decode("fda79a24e50ff70ff42f7d89585da5bd19d9e5cc"))
+    print(address.toBase58())
+
+    val second = Thing.fromBytes<PKH>(HEX.decode("4a22c3c4cbb31e4d03b15550636762bda0baf85a"))
+    print(second.toBase58())
+
+    val a = PKHAddress.fromPubKeyHash(NetworkType.TEST,
+        HEX.decode("fda79a24e50ff70ff42f7d89585da5bd19d9e5cc"))
+
+    assertThat(a.toBase58()).isEqualTo("n4eA2nbYqErp7H6jebchxAN59DmNpksexv")
+
+    val b = PKHAddress.fromPubKeyHash(NetworkType.MAIN,
+        HEX.decode("4a22c3c4cbb31e4d03b15550636762bda0baf85a"))
+    assertThat(b.toBase58()).isEqualTo("17kzeh4N8g49GFvdDzSf8PjaPfyoD1MndL")
+  }
+
+  @Test
   fun `toBase58`() {
     val a = PKHAddress.fromPubKeyHash(NetworkType.TEST,
         HEX.decode("fda79a24e50ff70ff42f7d89585da5bd19d9e5cc"))

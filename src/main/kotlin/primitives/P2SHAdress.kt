@@ -14,6 +14,8 @@ class P2SHAddress private constructor(networkType: NetworkType, hash160: ByteArr
       return P2SHAddress(network, hash160)
     }
 
+    // TODO: val foo = Base58Address.fromBase58(NetworkType.MAIN, "3AUxLWAfDmLvJLnD7uenGiFsUwZr3BG7du")
+
     // TODO: needs tests
     // FIX comments
     /**

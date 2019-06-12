@@ -30,6 +30,7 @@ class PKHAddress private constructor(networkType: NetworkType, hash160: ByteArra
      * @return constructed address
      */
     fun fromPubKeyHash(network: NetworkType, hash160: ByteArray): PKHAddress {
+      // Map from network type to PKHVersion
       return PKHAddress(network, hash160)
     }
 
