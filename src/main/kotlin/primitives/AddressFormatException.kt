@@ -55,4 +55,6 @@ open class AddressFormatException(message: String) : Exception(message) {
    */
   class WrongNetwork(prefix: Byte) : AddressFormatException(
       "Address prefix did not match acceptable versions for network: $prefix")
+
+  class InvalidVersion(version: Byte) : AddressFormatException("Invalid program version: $version")
 }
