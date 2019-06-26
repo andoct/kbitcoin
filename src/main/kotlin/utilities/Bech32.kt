@@ -166,7 +166,7 @@ class Bech32 {
         output[i + hrpLength + 1] = (ordinal and 0x1f).toByte()
       }
 
-      // out[hrpLength] = 0
+      output[hrpLength] = 0
       return output
     }
 
